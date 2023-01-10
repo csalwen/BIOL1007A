@@ -1,2 +1,4 @@
 # BIOL1007A
-Repo for the Reproducible Biology in R class
+Repo for Reproducible Biology in R
+
+### Winter 2023

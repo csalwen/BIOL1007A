@@ -1,0 +1,15 @@
+---
+title: "BIOL 1007A Webpage"
+author: "Camilla Salwen"
+date: "2023-01-10"
+output:
+  prettydoc ::html_pretty:
+    theme: architect
+    highlight: github
+---
+
+## Assignments
+
+[Assignment 1](Assignment1.html)
+
+[Website link](https://amazon.com)

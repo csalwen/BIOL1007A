@@ -41,7 +41,7 @@ queue <- c(queue[2:5])
 queue <- c("donkey", queue[1:4])
 queue <- c(queue[1:4])
 queue <- append(queue, "aphid", after = 3)
-# which(queue,"aphid")
+which(queue == "aphid")
 ```
 
 

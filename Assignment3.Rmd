@@ -1,0 +1,47 @@
+---
+title: "Assignment 3"
+author: "Camilla Salwen"
+date: "2023-01-12"
+output: html_document
+---
+
+### Question 1
+```{r}
+x <- 1.1
+a <- 2.2
+b <- 3.3
+
+z <- x^a^b
+print(z)
+
+z <- (x^a)^b
+print(z)
+
+z <- 3*x^3 + 2*x^2 + 1 
+print(z)
+```
+
+### Question 2
+```{r}
+first <- c(seq(from = 1, to = 8), seq(from = 7, to = 1)) 
+
+b <- rep(x = 1:5)
+second <- rep(x = 1:5, times = b)
+
+c <- rep(x = 1:5)
+third <- rep(x = 5:1, times = c)
+
+```
+
+### Question 3
+```{r}
+queue <- c("sheep", "fox", "owl", "ant")
+queue <- c(queue[1:4], "serpent")
+queue <- c(queue[2:5])
+queue <- c("donkey", queue[1:4])
+queue <- c(queue[1:4])
+queue <- append(queue, "aphid", after = 3)
+# which(queue,"aphid")
+```
+
+

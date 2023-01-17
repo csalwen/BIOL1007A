@@ -1,0 +1,46 @@
+---
+title: "Assignment 4"
+author: "Camilla Salwen"
+date: "2023-01-17"
+output: html_document
+---
+
+## Question 1
+
+```{r}
+n_dims <- sample(3:10, 1)
+
+cons_int <- 1:(n_dims)^2
+
+elements <- sample(cons_int)
+
+mat <- matrix(data = elements, nrow = n_dims, ncol = n_dims)
+
+print(mat)
+
+transposed <- t(mat)
+
+print(transposed)
+# numbers are swapped diagonally, row is column and column is row
+
+sum(mat[1,])
+mean(mat[1,])
+
+sum(mat[n_dims,])
+mean(mat[n_dims,])
+
+
+```
+
+## Question 2
+```{r}
+my_matrix <- matrix(data = runif(16), nrow = 4, ncol = 4)
+my_logical <- c((runif(100) > 0.5))
+my_letters <- sample(c(letters))
+
+
+my_list <- list(my_matrix, my_logical, my_letters)
+
+```
+
+

@@ -23,3 +23,5 @@ Hello and welcome to my web page! My name is Camilla and I am a sophomore feb bi
 ## Weekly Assignments
 
 [Weekly Assignment 1](WA1.html) 
+
+[Weekly Assignment 2](WA2.html)

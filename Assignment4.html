@@ -368,31 +368,37 @@ elements &lt;- sample(cons_int)
 mat &lt;- matrix(data = elements, nrow = n_dims, ncol = n_dims)
 
 print(mat)</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    2   16   14    9   13
-## [2,]    3   10   24   22   25
-## [3,]   17   18   15    8   19
-## [4,]   11    6   20    1   21
-## [5,]   23   12    5    7    4</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
+## [1,]   11   35   62   22   34   29   50    8
+## [2,]   31   21   37   32    2   17    4   54
+## [3,]   27   46   26   63   14   18   13   60
+## [4,]   39   28   41    5   24    6   48   36
+## [5,]   43   15   12    9   64    1   52   44
+## [6,]   61   25   10   45    7   38   16   59
+## [7,]   57   19   20   56   55   40   33   49
+## [8,]   30   51    3   47   53   42   58   23</code></pre>
 <pre class="r"><code>transposed &lt;- t(mat)
 
 print(transposed)</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5]
-## [1,]    2    3   17   11   23
-## [2,]   16   10   18    6   12
-## [3,]   14   24   15   20    5
-## [4,]    9   22    8    1    7
-## [5,]   13   25   19   21    4</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8]
+## [1,]   11   31   27   39   43   61   57   30
+## [2,]   35   21   46   28   15   25   19   51
+## [3,]   62   37   26   41   12   10   20    3
+## [4,]   22   32   63    5    9   45   56   47
+## [5,]   34    2   14   24   64    7   55   53
+## [6,]   29   17   18    6    1   38   40   42
+## [7,]   50    4   13   48   52   16   33   58
+## [8,]    8   54   60   36   44   59   49   23</code></pre>
 <pre class="r"><code># numbers are swapped diagonally, row is column and column is row
 
 sum(mat[1,])</code></pre>
-<pre><code>## [1] 54</code></pre>
+<pre><code>## [1] 251</code></pre>
 <pre class="r"><code>mean(mat[1,])</code></pre>
-<pre><code>## [1] 10.8</code></pre>
+<pre><code>## [1] 31.375</code></pre>
 <pre class="r"><code>sum(mat[n_dims,])</code></pre>
-<pre><code>## [1] 51</code></pre>
+<pre><code>## [1] 307</code></pre>
 <pre class="r"><code>mean(mat[n_dims,])</code></pre>
-<pre><code>## [1] 10.2</code></pre>
+<pre><code>## [1] 38.375</code></pre>
 </div>
 <div id="question-2" class="section level2">
 <h2>Question 2</h2>
@@ -401,7 +407,48 @@ my_logical &lt;- c((runif(100) &gt; 0.5))
 my_letters &lt;- sample(c(letters))
 
 
-my_list &lt;- list(my_matrix, my_logical, my_letters)</code></pre>
+my_list &lt;- list(my_matrix = my_matrix, my_logical = my_logical, my_letters = my_letters)
+
+new_list &lt;- list(my_list$my_matrix[2,2], my_list$my_logical[2], my_list$my_letters[2])
+
+typeof(new_list[[1]])</code></pre>
+<pre><code>## [1] &quot;double&quot;</code></pre>
+<pre class="r"><code>typeof(new_list[[2]])</code></pre>
+<pre><code>## [1] &quot;logical&quot;</code></pre>
+<pre class="r"><code>typeof(new_list[[3]])</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>vec &lt;- unlist(new_list)
+
+typeof(vec)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+</div>
+<div id="question-3" class="section level2">
+<h2>Question 3</h2>
+<pre class="r"><code>my_unifs &lt;- runif(26, min = 0, max = 10)
+my_Letters &lt;- sample(c(LETTERS))
+
+data_frame &lt;- data.frame(my_unifs = my_unifs, my_Letters = my_Letters)
+
+data_frame$my_unifs[sample(1:26, 4)] &lt;- NA
+
+complete.cases(data_frame$my_unifs)</code></pre>
+<pre><code>##  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE
+## [13] FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [25]  TRUE  TRUE</code></pre>
+<pre class="r"><code>ordered_data_frame &lt;- data_frame[order(data_frame$my_Letters), ]
+
+mean(data_frame[,&quot;my_unifs&quot;], na.rm = TRUE)</code></pre>
+<pre><code>## [1] 4.948405</code></pre>
+<pre class="r"><code>colnames(ordered_data_frame)[2] &lt;- &quot;my_LETTERS&quot;
+
+head(ordered_data_frame)</code></pre>
+<pre><code>##     my_unifs my_LETTERS
+## 13        NA          A
+## 23 0.5718557          B
+## 26 3.6825748          C
+## 1  5.8633176          D
+## 20 8.9530699          E
+## 19        NA          F</code></pre>
 </div>
 
 

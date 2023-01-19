@@ -39,7 +39,41 @@ my_logical <- c((runif(100) > 0.5))
 my_letters <- sample(c(letters))
 
 
-my_list <- list(my_matrix, my_logical, my_letters)
+my_list <- list(my_matrix = my_matrix, my_logical = my_logical, my_letters = my_letters)
+
+new_list <- list(my_list$my_matrix[2,2], my_list$my_logical[2], my_list$my_letters[2])
+
+typeof(new_list[[1]])
+
+typeof(new_list[[2]])
+
+typeof(new_list[[3]])
+
+vec <- unlist(new_list)
+
+typeof(vec)
+
+```
+
+## Question 3
+```{r}
+
+my_unifs <- runif(26, min = 0, max = 10)
+my_Letters <- sample(c(LETTERS))
+
+data_frame <- data.frame(my_unifs = my_unifs, my_Letters = my_Letters)
+
+data_frame$my_unifs[sample(1:26, 4)] <- NA
+
+complete.cases(data_frame$my_unifs)
+
+ordered_data_frame <- data_frame[order(data_frame$my_Letters), ]
+
+mean(data_frame[,"my_unifs"], na.rm = TRUE)
+
+colnames(ordered_data_frame)[2] <- "my_LETTERS"
+
+head(ordered_data_frame)
 
 ```
 

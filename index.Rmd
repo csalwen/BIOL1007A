@@ -4,9 +4,11 @@ author: "Camilla Salwen"
 date: "2023-01-10"
 output:
   prettydoc ::html_pretty:
-    theme: architect
+    theme: leonids
     highlight: github
 ---
+
+Hello and welcome to my web page! My name is Camilla and I am a sophomore feb biology major at Middlebury College. Here are my daily and weekly assignments from my j-term class: Reproducible Biology in R.
 
 ## Daily Assignments
 

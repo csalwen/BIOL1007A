@@ -20,6 +20,8 @@ Hello and welcome to my web page! My name is Camilla and I am a sophomore feb bi
 
 [Assignment 4 and 5](Assignment4.html)
 
+[Assignment 6](Assignment6.html)
+
 ## Weekly Assignments
 
 [Weekly Assignment 1](WA1.html) 

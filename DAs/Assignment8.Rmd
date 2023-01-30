@@ -1,0 +1,45 @@
+---
+title: "Assignment 8"
+author: "Camilla Salwen"
+date: "2023-01-26"
+output: html_document
+---
+
+## Weekly Assignment 2
+```{r}
+
+# I didn't have default values, just the variable name
+func <- function(mean1 = 10, sd1 = 1.5, mean2 = 45, sd2 = 2.5){
+  # I didn't put n in the arguments meaning it is less reproducible
+  Type <- rep(c("Control", "Treatment"), each = 25)
+  Value <- c(rnorm(25, mean = mean1, sd = sd1), rnorm(25, mean = mean2, sd = sd2)) # had the set values in here not the argument, now it works for different values
+  dframe <- data.frame(Type = Type, Value = Value)
+  return(dframe)
+  
+}
+funcdata = func(mean1 = 2, sd1 = 1.5, mean2 = 13, sd2 = 2)
+
+head(funcdata)
+
+results <- aov(Value ~ Type, data = funcdata)
+# didn't write a function for this, but I think both ways are fine
+summary(results)
+
+
+func2 <- function(data_frame = NULL){ # didn't put a default value
+  test <- aov(data_frame[,1] ~ data_frame[,2], data = data_frame) # didn't use the column names -- that would be cleaner
+  all_stats <- summary(test)
+  p_value <- all_stats[1,5]
+  return(p_value)
+}
+```
+
+
+## Assignment 6:
+Our code looks very similar for this assignment. There are a couple tiny things I could've done to be more efficient, but overall they work the same. For example, I could have used the %in% operator on question 2 instead of saying : Species == "versicolor"|Species == "virginica".
+
+
+
+
+
+.

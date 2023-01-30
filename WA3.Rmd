@@ -1,0 +1,40 @@
+---
+title: "Weekly Assignment 3"
+author: "Camilla Salwen"
+date: "2023-01-26"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(patchwork)
+
+
+sampledata <- read.table(file = "Data/BiomassData.csv", header = TRUE, sep = ",")
+
+head(sampledata)
+
+arrange(sampledata, by = DRH...cm.)
+
+```
+
+```{r}
+p<- ggplot(data=sampledata, 
+           aes(x= Number, y= Total.AGB...kg., )) + geom_bar(position="stack", stat="identity", color="black") + 
+  ylab("Aboveground dry mass (Mg)") + 
+  xlab("Individual trees by diameter rank") + 
+  theme_few() + scale_fill_grey() +
+  theme(panel.background = element_rect(fill = 'gray94', color = 'black'), 
+        axis.title.y = element_text(size=12, colour = "black"),
+        strip.text.y = element_text(size = 10, face="bold", colour = "black"),
+        axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) + 
+  guides(fill=guide_legend(nrow=1,byrow=TRUE)) 
+
+
+p
+```
+

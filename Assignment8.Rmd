@@ -1,0 +1,78 @@
+---
+title: "Assignment 8"
+author: "Camilla Salwen"
+date: "2023-01-26"
+output: html_document
+---
+
+## Weekly Assignment 2
+```{r}
+
+# I didn't have default values, just the variable name
+func <- function(mean1 = 10, sd1 = 1.5, mean2 = 45, sd2 = 2.5){
+  # I didn't put n in the arguments meaning it is less reproducible
+  Type <- rep(c("Control", "Treatment"), each = 25)
+  Value <- c(rnorm(25, mean = mean1, sd = sd1), rnorm(25, mean = mean2, sd = sd2)) # had the set values in here not the argument, now it works for different values
+  dframe <- data.frame(Type = Type, Value = Value)
+  return(dframe)
+  
+}
+funcdata = func(mean1 = 2, sd1 = 1.5, mean2 = 13, sd2 = 2)
+
+head(funcdata)
+
+results <- aov(Value ~ Type, data = funcdata)
+# didn't write a function for this, but I think both ways are fine
+summary(results)
+
+
+func2 <- function(data_frame = NULL){ # didn't put a default value
+  test <- aov(data_frame[,1] ~ data_frame[,2], data = data_frame) # didn't use the column names -- that would be cleaner
+  all_stats <- summary(test)
+  p_value <- all_stats[1,5]
+  return(p_value)
+}
+```
+
+
+## Assignment 6:
+Our code looks very similar for this assignment. There are a couple tiny things I could've done to be more efficient, but overall they work the same. For example, I could have used the %in% operator on question 2 instead of saying : Species == "versicolor"|Species == "virginica".
+
+
+
+# Part 2
+
+```{r}
+library(tidyverse)
+library(ggthemes)
+
+dryadData <- read.table(file = "Data/veysey-babbit_data_amph.csv", header = TRUE, sep = ",")
+
+dryadData$species <- factor(dryadData$species, labels=c("Spotted Salamander", "Wood Frog")) # creating labels to use for plot
+
+dryadData$treatment <- factor(dryadData$treatment, levels = c("Reference", "100m", "30m"))
+
+
+p<- ggplot(data=dryadData, 
+           aes(x=interaction(wetland, treatment), 
+               y=count.total.adults, fill=factor(year))) + geom_bar(position="dodge", stat="identity", color="black") + 
+  ylab("Number of breeding adults") + # labeling y
+  xlab("") + # labeling x nothing
+  scale_y_continuous(breaks = c(0,100,200,300,400,500)) + # y axis broken up by 100s
+  scale_x_discrete(labels=c("30 (Ref)", "124 (Ref)", "141 (Ref)", "25 (100m)","39 (100m)","55 (100m)","129 (100m)", "7 (30m)","19 (30m)","20 (30m)","59 (30m)")) + # labels on the x axis
+  facet_wrap(~species, nrow=2, strip.position="right") + # putting the panels together
+  theme_few() + scale_fill_grey() + # theme of greyscale
+  theme(panel.background = element_rect(fill = 'gray94', color = 'black'), # making the background color light grey
+        legend.position="top",  legend.title= element_blank(), # changing legend position and taking away legend title
+        axis.title.y = element_text(size=12, face="bold", colour = "black"), # look of the y asix title
+        strip.text.y = element_text(size = 10, face="bold", colour = "black")) +  # look of the x axis title
+  guides(fill=guide_legend(nrow=1,byrow=TRUE)) 
+
+p
+
+```
+
+
+
+
+.

@@ -1,0 +1,84 @@
+---
+title: "Assignment 7"
+author: "Camilla Salwen"
+date: "2023-01-24"
+output: html_document
+---
+
+### Question 1
+
+```{r}
+library(dplyr)
+
+new_starwars <- starwars %>%
+  group_by(species) %>%
+  summarize(number_of_ind = n()) %>%
+  filter(number_of_ind > 1)
+final <- filter(starwars, species %in% new_starwars$species) %>%
+  select(-(films:starships))
+
+glimpse(final)
+
+```
+
+### Question 2
+
+```{r}
+no_NAs <- final[complete.cases(final [,2]), ]
+
+summary <- no_NAs %>%
+  group_by(species) %>%
+  summarize(mean = mean(height), median = median(height), stdev = sd(height), total_number = n())
+
+```
+
+### Question 3
+
+```{r}
+library(ggplot2)
+library(ggthemes)
+library(patchwork)
+library(viridis)
+
+cols <- viridis(9, option = "turbo")
+height_variation <- ggplot(data=no_NAs, aes(x=species, y=height, fill = species)) +
+  geom_boxplot() +
+  scale_fill_manual(values = cols) +
+  xlab("Species") +
+  ylab("Height (cm)") +
+  theme_minimal() +
+  geom_text(x = 8.5, y = 230, label = "p=1.2E-0.5")
+
+height_variation
+
+```
+
+### Question 4
+
+```{r}
+
+petals <- ggplot(data = iris, aes(x=Petal.Length, y=Petal.Width)) +
+  geom_point(size = 3, shape = 23, fill = "darkorchid3") +
+  geom_smooth(method='lm', formula = y~ x) +
+  xlab("Petal Length") +
+  ylab("Petal Width") +
+  theme_classic()
+  
+petals
+```
+
+### Question 5
+
+```{r}
+height_variation / petals
+```
+
+
+
+
+
+
+
+
+
+

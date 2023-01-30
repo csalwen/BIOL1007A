@@ -1,0 +1,28 @@
+---
+title: "Final Project"
+author: "Camilla Salwen"
+date: "2023-01-30"
+output: html_document
+---
+
+# Visiting DC? Here's what to do.
+
+#### Breakfast Options: 
+
+*Bagels Etc.*
+Come to Bagels Etc for delicious pillow-like bagels right near Dupont Circle! Beware that this establishment is *cash only* but they do have an ATM there. Located just a mile from Georgetown and a few minutes walk from the Dupont metro station, this small bagel shop is perfect to start off your day.
+**Address: 2122 P St NW #100, Washington, DC 20037**
+**Hours: 6am - 4pm everyday (Sunday 6am - 3pm)**
+
+*Tatte Bakery and Cafe*
+A popular bakery chain in the Northeast US, Tatte is a wonderful place to go to for anything from just a coffee to a more hearty breakfast sandwich. Everything there is delicious so you can't go wrong. There are several locations around DC, generally open from 7am to 8pm. 
+
+*Le Diplomate*
+
+
+#### Sites:
+
+
+#### Lunch Options:
+
+#### Dinner Options:

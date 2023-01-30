@@ -1,0 +1,77 @@
+---
+title: "Assignment 9"
+author: "Camilla Salwen"
+date: "2023-01-30"
+output: html_document
+---
+
+## Question 1
+```{r}
+vect <- sample(rep(0:1, times = 50), 4)
+varcounter <- 0
+
+zero_check <- function(vec){
+  for (i in 1:length(vec)) {
+    if (vec[i] == 0) {varcounter <- varcounter + 1}
+  }
+  return(varcounter)
+}
+
+zero_check(vect)
+```
+
+
+## Question 2
+```{r}
+
+mat_func <- function(int1 = 2, int2 = 2) {
+  mat <- matrix(nrow = int1, ncol = int2)
+  for (i in 1:nrow(mat)) {
+    for (j in 1:ncol(mat)) {
+      mat[i,j] <- i*j
+    }
+  }
+  return(mat)
+}
+
+mat_func()
+```
+
+
+## Question 3
+```{r}
+
+
+func <- function(mean1, sd1, mean2, sd2 ){
+  
+  Type <- rep(c("Control", "Treatment"), each = 25)
+  Value <- c(rnorm(25, mean = 10, sd = 1.5), rnorm(25, mean = 45, sd = 2))
+  dframe <- data.frame(Type = Type, Value = Value)
+  return(dframe)
+  
+}
+
+func2 <- function(data_frame){
+  test <- aov(data_frame[,2] ~ data_frame[,1], data = data_frame)
+  all_stats <- summary(test)
+  p_value <- all_stats[[1]][["Pr(>F)"]][1]
+  return(p_value)
+}
+
+df <- data.frame(matrix(ncol = 2, nrow = 100))    
+for (i in 1:100) {
+  funcdata <- func(mean1 = 10, sd1 = 1.5, mean2 = 45, sd2 = 2)
+  p_value <- func2(funcdata)
+  df[i,1] <- i
+  df[i,2] <- p_value
+}
+df
+
+```
+
+
+
+
+
+
+

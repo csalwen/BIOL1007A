@@ -1,0 +1,35 @@
+---
+title: "WA4"
+author: "Camilla Salwen"
+date: "2023-01-31"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+Simulate a brand new data frame (the type of data is up to you) and conduct a statistical analysis in R using 2 variables. Create a basic ggplot that goes with the analysis.
+
+```{r}
+library(tidyverse)
+library(ggthemes)
+
+temp <- c(10, 22,0, 26,13, 31,-16, 26,-24, 7,7, 37,20, 37,20, 45,23, 42,14, 37)
+days <- rep(1:10, each = 2)
+df <- data.frame(days, temp)
+
+ANOmodel <- aov(temp ~ factor(days), data = df)
+summary(ANOmodel)
+
+
+df %>%
+  group_by(factor(days)) %>%
+  summarize(avgtemp = mean(temp, na.rm = T), N = n())
+
+df$days <- factor(df$days)
+ANOplot <- ggplot(data = df, mapping = aes(x = days, y = temp)) +
+  geom_boxplot()
+ANOplot
+
+
+```
+

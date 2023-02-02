@@ -1,0 +1,31 @@
+---
+title: "newplot"
+author: "Camilla Salwen"
+date: "2023-01-31"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+## Basic Scatterplot
+```{r}
+library(ggplot2)
+library(ggiraph)
+
+p <- ggplot(data = iris, mapping = aes(x = Petal.Width, y = Petal.Length)) +
+  geom_point(size = 3, color = "orchid")
+p
+
+```
+
+
+## Adding Interactive Element
+```{r}
+newp <- ggplot(data = iris, mapping = aes(x = Petal.Width, y = Petal.Length)) +
+  geom_point_interactive (size = 3, aes(tooltip = Species, data_id = Species))
+
+girafe(ggobj = newp, width_svg = 6, height_svg = 3.75)
+
+```
+
+

@@ -1,0 +1,45 @@
+---
+title: "First Interactive Figure"
+author: "Camilla Salwen"
+date: "2023-01-31"
+output: html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+### Libraries
+```{r}
+library(dplyr)
+library(ggplot2)
+library(ggiraph)
+library(patchwork)
+```
+
+### Manipulating the data to show mean sepal length for each species
+```{r}
+d <- iris
+
+Means <- iris %>%
+  group_by(Species) %>%
+  summarize(Mean.Sepal.Length = mean(Sepal.Length, na.rm = TRUE), N = n())
+```
+
+### Creating a simple bar graph with the data
+```{r}
+p3 <- ggplot(data = Means, aes(x=Species, y= Mean.Sepal.Length)) +
+  geom_col (linewidth = 2, color = "black", fill = "skyblue") + 
+  xlab("Species") +
+  ylab("Mean Sepal Length")
+p3
+```
+
+### Making the interactive graphs!!!
+```{r}
+p3interactive <- ggplot(data = Means, aes(x=Species, y= Mean.Sepal.Length)) +
+  geom_col_interactive (linewidth =1, color = "black", fill = "skyblue", aes(tooltip = Mean.Sepal.Length, data_id = Mean.Sepal.Length)) + 
+  xlab("") +
+  ylab("Mean Sepal Length")
+
+girafe(ggobj = p3interactive, width_svg = 7, height_svg = 4)
+```
+

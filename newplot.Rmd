@@ -13,19 +13,19 @@ library(ggplot2)
 library(ggiraph)
 
 p <- ggplot(data = iris, mapping = aes(x = Petal.Width, y = Petal.Length)) +
-  geom_point(size = 3, color = "orchid")
+  geom_point(size = 2)
 p
 
 ```
 
 
-## Adding Interactive Element
+## Making the ggiraph plot!
 ```{r}
-newp <- ggplot(data = iris, mapping = aes(x = Petal.Width, y = Petal.Length)) +
-  geom_point_interactive (size = 3, aes(tooltip = Species, data_id = Species))
 
-girafe(ggobj = newp, width_svg = 6, height_svg = 3.75)
+p2 <- ggplot(data = iris, mapping = aes(x = Petal.Width, y = Petal.Length)) +
+  geom_point_interactive (size = 4, aes(tooltip = Species, data_id = Species))
+
+girafe(ggobj = p2, width_svg = 6,  height_svg = 3.75)
 
 ```
-
 

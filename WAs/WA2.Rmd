@@ -12,7 +12,7 @@ output: html_document
 func <- function(mean1, sd1, mean2, sd2 ){
   
   Type <- rep(c("Control", "Treatment"), each = 25)
-  Value <- c(rnorm(25, mean = 10, sd = 1.5), rnorm(25, mean = 45, sd = 2))
+  Value <- c(rnorm(25, mean = mean1, sd = sd1), rnorm(25, mean = mean2, sd = sd2))
   dframe <- data.frame(Type = Type, Value = Value)
   return(dframe)
   
@@ -26,9 +26,9 @@ summary(results)
 
 
 func2 <- function(data_frame){
-  test <- aov(data_frame[,1] ~ data_frame[,2], data = data_frame)
-  all_stats <- summary(all_stats)
-  p_value <- all_stats[1,5]
+  test <- aov(data_frame[,2] ~ data_frame[,1], data = data_frame)
+  all_stats <- summary(test)
+  p_value <- all_stats[[1]][["Pr(>F)"]][1]
   return(p_value)
 }
 

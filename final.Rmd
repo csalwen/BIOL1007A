@@ -22,6 +22,10 @@ This [example](https://www.nytimes.com/interactive/2020/us/covid-19-vaccine-dose
 ## How do you make an interactive chart with ggiraph???
 Steps on how to make one can be found [here](interactivefigure.html)!!
 
+## Walk through with the class
+The example code I did as part of my presentation can be found [here](newplot.html).
+
+#### Fun fact! This ggplot extension was created by someone French, so the girafe function is spelled the french way instead of giraffe like in english.
 ![](https://animals.sandiegozoo.org/sites/default/files/2016-11/animals_hero_giraffe_1_0.jpg)
 
 

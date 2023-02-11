@@ -14,25 +14,25 @@ Hello and welcome to my web page! My name is Camilla and I am a sophomore feb bi
 
 [Assignment 1](Assignment1.html)
 
-[Assignment 2](Assignment2.html)
+[Assignment 2](DAs/Assignment2.html)
 
-[Assignment 3](Assignment3.html)
+[Assignment 3](DAs/Assignment3.html)
 
-[Assignment 4 and 5](Assignment4.html)
+[Assignment 4 and 5](DAs/Assignment4.html)
 
-[Assignment 6](Assignment6.html)
+[Assignment 6](DAs/Assignment6.html)
 
 [Assignment 7](DAs/Assignment7.html)
 
-[Assignment 8](Assignment8.html)
+[Assignment 8](DAs/Assignment8.html)
 
 [Assignment 9](Assignment9.html)
 
 ## Weekly Assignments
 
-[Weekly Assignment 1](WA1.html) 
+[Weekly Assignment 1](DAs/WA1.html) 
 
-[Weekly Assignment 2](WA2.html)
+[Weekly Assignment 2](WAs/WA2.html)
 
 [Weekly Assignment 3](WA3.html)
 
@@ -41,8 +41,6 @@ Hello and welcome to my web page! My name is Camilla and I am a sophomore feb bi
 ## Final Project!
 
 [Project page](final.html)
-
-[Example interactive figure](interactivefigure.html)
 
 Thanks for reading!
 

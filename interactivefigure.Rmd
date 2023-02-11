@@ -1,19 +1,39 @@
 ---
-title: "First Interactive Figure"
+title: "Interactive Figure"
 author: "Camilla Salwen"
 date: "2023-01-31"
-output: html_document
+output:
+  prettydoc ::html_pretty:
+    theme: cayman
+    highlight: github
 editor_options: 
   chunk_output_type: inline
 ---
 
-### Libraries
-```{r}
+## How to make an interactive graph!!!
+
+1. add _interactive to the geom function you are using
+  + for example geom_col --> geom_col_interactive
+2. add an aes() in the geom function
+  + this will include tooltip = and data_id =
+  + put the column name whose info you want to be shown when you hover over the point/bar/etc
+    + for example, tooltip = Mean.Sepal.Length, data_id = Mean.Sepal Length
+    + the input should be the same for both tooltip and data_id
+3. use the girafe() function
+  + this is written after/outside the code to make your plot
+  + in the parentheses, write ggobj = name of your plot
+  + the width_svg and height_svg determine the dimensions of the figure
+    + play around with them to find the dimensions that work best for your specific graph
+
+
+```{r include=FALSE}
 library(dplyr)
 library(ggplot2)
 library(ggiraph)
 library(patchwork)
 ```
+
+## Example:
 
 ### Manipulating the data to show mean sepal length for each species
 ```{r}
@@ -33,11 +53,12 @@ p3 <- ggplot(data = Means, aes(x=Species, y= Mean.Sepal.Length)) +
 p3
 ```
 
-### Making the interactive graphs!!!
+    
+### Graph with the ggiraph extension
 ```{r}
 p3interactive <- ggplot(data = Means, aes(x=Species, y= Mean.Sepal.Length)) +
   geom_col_interactive (linewidth =1, color = "black", fill = "skyblue", aes(tooltip = Mean.Sepal.Length, data_id = Mean.Sepal.Length)) + 
-  xlab("") +
+  xlab("Species") +
   ylab("Mean Sepal Length")
 
 girafe(ggobj = p3interactive, width_svg = 7, height_svg = 4)

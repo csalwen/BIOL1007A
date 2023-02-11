@@ -363,7 +363,7 @@ display: none;
 func &lt;- function(mean1, sd1, mean2, sd2 ){
   
   Type &lt;- rep(c(&quot;Control&quot;, &quot;Treatment&quot;), each = 25)
-  Value &lt;- c(rnorm(25, mean = 10, sd = 1.5), rnorm(25, mean = 45, sd = 2))
+  Value &lt;- c(rnorm(25, mean = mean1, sd = sd1), rnorm(25, mean = mean2, sd = sd2))
   dframe &lt;- data.frame(Type = Type, Value = Value)
   return(dframe)
   
@@ -372,23 +372,23 @@ funcdata = func(mean1 = 10, sd1 = 1.5, mean2 = 45, sd2 = 2)
 
 head(funcdata)</code></pre>
 <pre><code>##      Type     Value
-## 1 Control 11.496978
-## 2 Control  7.973974
-## 3 Control 10.747396
-## 4 Control 11.757480
-## 5 Control 10.852945
-## 6 Control  9.924910</code></pre>
+## 1 Control  8.083981
+## 2 Control  7.725516
+## 3 Control  8.082654
+## 4 Control  9.670048
+## 5 Control  9.144260
+## 6 Control 10.222939</code></pre>
 <pre class="r"><code>results &lt;- aov(Value ~ Type, data = funcdata)
 summary(results)</code></pre>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)    
-## Type         1  15037   15037    5134 &lt;2e-16 ***
-## Residuals   48    141       3                   
+## Type         1  14931   14931    5769 &lt;2e-16 ***
+## Residuals   48    124       3                   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <pre class="r"><code>func2 &lt;- function(data_frame){
-  test &lt;- aov(data_frame[,1] ~ data_frame[,2], data = data_frame)
-  all_stats &lt;- summary(all_stats)
-  p_value &lt;- all_stats[1,5]
+  test &lt;- aov(data_frame[,2] ~ data_frame[,1], data = data_frame)
+  all_stats &lt;- summary(test)
+  p_value &lt;- all_stats[[1]][[&quot;Pr(&gt;F)&quot;]][1]
   return(p_value)
 }</code></pre>
 
